@@ -22,6 +22,9 @@ Think you understand what's happening? Try to implement the logic for the other 
 1. For more advanced features with socket.io on Sails, check http://socket.io/docs/rooms-and-namespaces/
 2. To keep track of models on the client side (jQuery can become cumbersome if complex application), check out RivetsJs http://rivetsjs.com/
 
+## Additional Sails Js information:
+http://www.slideshare.net/stenio123/sails-js-intro-impactaus
+
 
 
 
