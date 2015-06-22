@@ -38,24 +38,24 @@ module.exports = {
     var news = req.param("news");
     sails.sockets.blast('news', news);
   },
-  //this is how we keep track of how many subscribers each team has,
-  subscribeFans: function (req,res) {
+  //this is how we keep track of how many sockets each team has in their room,
+  joinroomfans: function (req,res) {
     console.log("joining room fans socket id" + req.socket.id);
     sails.sockets.join(req.socket, 'blackhawksFans');
     sails.sockets.join(req.socket, 'lightningFans');
     sails.sockets.broadcast('blackhawksFans', 'updatedblackhawks', sails.sockets.subscribers('blackhawks').length);
     sails.sockets.broadcast('lightningFans', 'updatedlightning', sails.sockets.subscribers('lightning').length);
   },
-  //this is how a socket subscribes to receive news of their team
-  subscribe:function (req,res) {
+  //this is how a socket joins room to receive news of their team
+  joinroom:function (req,res) {
     var teamName = req.param("teamName");
     sails.sockets.join(req.socket,teamName);
     console.log( 'Socket ' + req.socket.id + 'joined room: ' + teamName);
     //teamName+'Fans' is name of the room, 'updated'+teamName is name of event
     sails.sockets.broadcast(teamName+'Fans', 'updated'+teamName, sails.sockets.subscribers(teamName).length);
   },
-  //unsubscribe from team news room
-  unsubscribe:function (req,res) {
+  //leave room from team news 
+  leaveroom:function (req,res) {
     var teamName = req.param("teamName");
     sails.sockets.leave(req.socket,teamName);
     console.log( 'Socket' + req.socket.id + 'left room: ' + teamName);

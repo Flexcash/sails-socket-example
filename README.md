@@ -15,6 +15,9 @@ a [Sails](http://sailsjs.org) application
 3. on the browser, go to http://localhost:1337/user
 4. enjoy adding users without needing to refresh browser window!
 
+## Tutorial
+Check a walk through of the code on http://impacta.us/blog
+
 ## Exercise
 Think you understand what's happening? Try to implement the logic for the other CRUD events, Read, Update, Delete.
 

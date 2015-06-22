@@ -1,6 +1,6 @@
 //when page loads, register this socket to receive notification of new fans(sockets) subscribed
 $(document).ready(function() {
-  io.socket.post('/teamnews/subscribeFans/',{});
+  io.socket.post('/teamnews/joinroomfans/',{});
 });
 
 /** event handling for Fan room */
@@ -35,23 +35,23 @@ io.socket.on('news',function(response){
 
 //subscribes to Blackhawks messages (code on TeamNewsController.subscribe)
 $("#gohawks").click( function() {
-  io.socket.post('/teamnews/subscribe/',{teamName:'blackhawks'});
+  io.socket.post('/teamnews/joinroom/',{teamName:'blackhawks'});
   alert("subscribed to Hawks news!");
 });
 //unsubscribes to Blackhawks messages (code on TeamNewsController.subscribe)
 $("#nohawks").click( function() {
-  io.socket.post('/teamnews/unsubscribe/',{teamName:'blackhawks'});
+  io.socket.post('/teamnews/leaveroom/',{teamName:'blackhawks'});
   alert("unsubscribed to Hawks news!");
 });
 
 //subscribes to Lightning messages (code on TeamNewsController.subscribe)
 $("#gotampa").click( function() {
-  io.socket.post('/teamnews/subscribe/',{teamName:'lightning'});
+  io.socket.post('/teamnews/joinroom/',{teamName:'lightning'});
   alert("subscribed to Lightning news!");
 });
 //unsubscribes to Lightning messages (code on TeamNewsController.subscribe)
 $("#notampa").click( function() {
-  io.socket.post('/teamnews/unsubscribe/',{teamName:'lightning'});
+  io.socket.post('/teamnews/leaveroom/',{teamName:'lightning'});
   alert("unsubscribed to Lightning news!");
 });
 
