@@ -1,0 +1,34 @@
+<h1>Sails js with socket io tutorial - part 2</h1>
+You can check the tutorial <a href="http://www.impacta.us/blog">here</a>.
+<a href="/user/">Part1 </a> Part2 Part3 Part4
+<p>
+
+<% if (teams) { %>
+  <select id="teamNameSelect">
+    <option value="0" selected="selected" style="display:none;">Select team</option>
+     <% _.each(teams, function(team) {  %>
+    <option value="<%=team.name%>"><%=team.name%></option>
+    <% }) %>
+  </select>
+<% } %>
+<input type="text" id="news" name="news" placeholder="type team news here"/>
+<button id="submit">Submit team news!</button> or <button id="blast">Blast to everyone</button>
+</p>
+<h3>Subscribe to Chicago Blackhawks news</h2>
+# of subscribed fans: <div id="blackhawksFans"></div>
+<br/>
+<button id="gohawks">Go Hawks!</button>
+<ul id="blackhawks">
+</ul>
+<button id="nohawks">Unsubscribe to Hawks!</button>
+  
+<h3>Subscribe to Tampa Lightning news</h2>
+# of subscribed fans: <div id="lightningFans"></div>
+<br/>
+<button id="gotampa">Go Tampa!</button>
+<ul id="lightning">
+</ul>
+<button id="notampa">Unsubscribe to Tampa!</button>
+
+ <!-- END Page Content -->
+<% block('localScripts', '<script src="/view_specific/teamnews_index_misc.js"></script>') %>

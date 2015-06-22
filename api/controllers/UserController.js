@@ -28,6 +28,26 @@ module.exports = {
       return res.badRequest('Sorry, this endpoint only accessible via sockets.');
     }
   },
+  teamsubscribe:function (req, res) {
+    console.log(JSON.stringify(req.params.all()));
+    var team = req.param("team");
+    console.log("team is " + team);
+    sails.socket.subscribe(req.socket, team);
+    console.log("Congratulations, socket " + req.socket.id + ' subscribed to ' + team);
+  },
+  generatenews: function (req,res) {
+    var teamNews = ['Hawks win!', 'Tampa loses!', 'Stanley cup in Chicago!', 'Tampa played great game...', 'Let\'s do better next year, Tampa!', 'At least Tampa has better weather!'];
+
+    var random = Math.floor(Math.random() * teamNews.length);
+    var team = 'blackhawks';
+    if ((random % 2) == 0) {
+      team = 'lightning';
+    }
+    sails.sockets.broadcast(team, 'news', teamNews[random]);
+  },
+  hockey: function(req, res) {
+    res.view();
+  },
   index:function (req, res) {
     res.view({
           welcomeMessage: 'Welcome to Sails + socket.io simple test. Please refrain from adding client logic on the server!'
